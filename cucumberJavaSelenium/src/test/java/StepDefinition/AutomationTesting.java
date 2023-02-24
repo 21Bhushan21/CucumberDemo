@@ -45,8 +45,8 @@ public class AutomationTesting {
 
 		//webPage:
 		driver.navigate().to("https://practice.automationtesting.in/");  
+		//driver.switchTo().defaultContent(); // Return to main window
 		
-		driver.switchTo().defaultContent(); // Return to main window
 
 
 
@@ -68,48 +68,50 @@ public class AutomationTesting {
 	}
 
 
-	@When("User able to click on Shop Menu")
-	public void user_able_to_click_on_shop_menu() throws InterruptedException 
-	{
-		System.out.println("inside step -user is  in Shop Menu ");
-
-		driver.findElement(By.xpath("//a[text()=\"Shop\"]")).click();
-
-		driver.switchTo().defaultContent(); // Return to main window
-	}
-
-
-
-
-	@And("Now click on Home menu button")
-	public void now_click_on_home_menu_button() 
-	{
-		System.out.println("inside step -user is  in automation Home page");
-
-		driver.findElement(By.xpath("//a[text()=\"Home\"]")).click();
-		
-
-		driver.switchTo().defaultContent(); // Return to main window
-
-	}
-
-
-
-
-	@Then("Test whether the Home page has Three Sliders only")
-	public void test_whether_the_home_page_has_three_sliders_only()
-	{
-		System.out.println("inside step -user Check siliders:");
-	}
-
-
-
-
-	@And("The Home page must contains only three sliders")
-	public void the_home_page_must_contains_only_three_sliders()
-	{
-
-	}
+//	@When("User able to click on Shop Menu")
+//	public void user_able_to_click_on_shop_menu() throws InterruptedException 
+//	{
+//		System.out.println("inside step -user is  in Shop Menu ");
+//
+//		driver.findElement(By.xpath("//a[text()=\"Shop\"]")).click();
+//
+//		driver.switchTo().defaultContent(); // Return to main window
+//	}
+//
+//
+//
+//
+//	@And("Now click on Home menu button")
+//	public void now_click_on_home_menu_button() 
+//	{
+//		System.out.println("inside step -user is  in automation Home page");
+//
+//		driver.findElement(By.xpath("//a[text()=\"Home\"]")).click();
+//		
+//
+//		driver.switchTo().alert().sendKeys("Close");
+//
+//
+//
+//	}
+//
+//
+//
+//
+//	@Then("Test whether the Home page has Three Sliders only")
+//	public void test_whether_the_home_page_has_three_sliders_only()
+//	{
+//		System.out.println("inside step -user Check siliders:");
+//	}
+//
+//
+//
+//
+//	@And("The Home page must contains only three sliders")
+//	public void the_home_page_must_contains_only_three_sliders()
+//	{
+//
+//	}
 
 
 
