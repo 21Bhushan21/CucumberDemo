@@ -29,6 +29,8 @@ import io.cucumber.java.en.But;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 import static org.junit.Assert.assertEquals;
 
 
@@ -53,7 +55,7 @@ public class Main
 		System.out.println("inside step - browser is open");
 
 		//chromedriver :
-		System.setProperty("webdriver.chrome.driver","C:/Users/bpatil10/eclipse-workspace/cucumberJavaSelenium/src/test/resources/Driver/chromedriver.exe");
+		WebDriverManager.chromedriver().setup();
 		ChromeOptions opt = new ChromeOptions();
 		opt.setExperimentalOption("excludeSwitches",Arrays.asList("disable-popup-blocking"));
 		driver = new ChromeDriver(opt);
