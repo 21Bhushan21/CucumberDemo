@@ -6,12 +6,12 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class descriptionBox 
+public class descriptionPage 
 {
 
 	
 	WebDriver driver;
-	public descriptionBox(WebDriver driver) 
+	public descriptionPage(WebDriver driver) 
 	{
 		this.driver = driver;
 		PageFactory.initElements(driver, this);

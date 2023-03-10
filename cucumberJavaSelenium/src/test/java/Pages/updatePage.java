@@ -6,10 +6,10 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class updateProduct {
+public class updatePage {
 
 	WebDriver driver;
-	public updateProduct(WebDriver driver)
+	public updatePage(WebDriver driver)
 	{
 		this.driver = driver;
 		PageFactory.initElements(driver, this);

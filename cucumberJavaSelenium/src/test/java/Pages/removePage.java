@@ -6,11 +6,11 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class removeProduct 
+public class removePage 
 {
 
 	WebDriver driver;
-	public removeProduct(WebDriver driver)
+	public removePage(WebDriver driver)
 	{
 		this.driver = driver;
 		PageFactory.initElements(driver, this);

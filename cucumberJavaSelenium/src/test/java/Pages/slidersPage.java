@@ -10,11 +10,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
-public class checkSliders
+public class slidersPage
 {
 	
 	
-	public checkSliders(WebDriver driver)
+	public slidersPage(WebDriver driver)
 	{
 		this.driver = driver;
 		AjaxElementLocatorFactory factory = new AjaxElementLocatorFactory(driver, 30);

@@ -7,12 +7,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class checkDiscount {
+public class discountPage {
 
 	WebDriver driver;
 	WebDriverWait wait;
 	
-	public checkDiscount(WebDriver driver) 
+	public discountPage(WebDriver driver) 
 	{
 		this.driver = driver;
 		PageFactory.initElements(driver, this);

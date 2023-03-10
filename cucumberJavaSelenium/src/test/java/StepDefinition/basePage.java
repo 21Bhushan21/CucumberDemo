@@ -18,14 +18,14 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Pages.addBook;
-import Pages.checkArrivals;
-import Pages.checkDiscount;
-import Pages.checkOut;
-import Pages.checkSliders;
-import Pages.descriptionBox;
-import Pages.finalBilling;
-import Pages.removeProduct;
-import Pages.updateProduct;
+import Pages.arrivalsPage;
+import Pages.discountPage;
+import Pages.checkOutPage;
+import Pages.slidersPage;
+import Pages.descriptionPage;
+import Pages.billingPage;
+import Pages.removePage;
+import Pages.updatePage;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -39,16 +39,16 @@ public class basePage
 {
 
 	WebDriver driver = null;
-	checkSliders sli ;
-	checkArrivals arrival;
-	addBook click;
-	descriptionBox box;
-	checkDiscount check;
-	removeProduct product ;
-	updateProduct update;
-	finalBilling billing;
 	WebDriverWait wait;
-	checkOut out;
+	slidersPage sli ;
+	arrivalsPage arrival;
+	addBook click;
+	descriptionPage box;
+	discountPage check;
+	removePage product ;
+	updatePage update;
+	billingPage billing;
+	checkOutPage out;
 	
 	//@Before(Value="@TestCase-1", order = 1)
 	@SuppressWarnings("deprecation")
@@ -89,7 +89,7 @@ public class basePage
 	public void clickOnShopMenu() throws InterruptedException 
 	{
 		
-		sli = new checkSliders(driver); 	
+		sli = new slidersPage(driver); 	
 		sli.clickOnShopBtn();	
 	}
 
@@ -134,7 +134,7 @@ public class basePage
 	@Then("Test whether the Home page has Three Arrivsals only")
 	public void TestWhetherTheHomePageHasThreeArrivalsOrNot()
 	{
-		arrival = new checkArrivals(driver);
+		arrival = new arrivalsPage(driver);
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		JavascriptExecutor js1 = (JavascriptExecutor) driver;
 		js1.executeScript("window.scrollBy(0,800)", "");
@@ -191,7 +191,7 @@ public class basePage
 	public void userAbleToDescrTab()
 	{	
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		box = new descriptionBox(driver);
+		box = new descriptionPage(driver);
 		click.checkItVisibleOrNot();
 
 	}
@@ -229,7 +229,7 @@ public class basePage
 	@Then("Click on the Add To Basket button which adds that book to your basket")
 	public void clickOnAddToBasket()
 	{
-		check = new  checkDiscount(driver);
+		check = new  discountPage(driver);
 		check.addToBasket();
 	}
 
@@ -284,7 +284,7 @@ public class basePage
 	@Then("click on Remove this icon in Check out page")
 	public void clickOnRemoveBook() throws InterruptedException
 	{
-		product= new removeProduct(driver);
+		product= new removePage(driver);
 		product.productRemove();
 
 	}
@@ -311,7 +311,7 @@ public class basePage
 	@Then("Click on textbox value")
 	public void clickOnTextBox()
 	{
-		update = new updateProduct(driver);
+		update = new updatePage(driver);
 		update.clickOntextBtn();
 
 	}
@@ -351,7 +351,7 @@ public class basePage
 	@And("User can find the Total price of the book in the Check out grid.")
 	public void fetchTotalPrice() throws InterruptedException
 	{
-		billing = new finalBilling(driver);
+		billing = new billingPage(driver);
 		String Actual = billing.checkOutGrid();
 		String Expected = "Total";
 		assertEquals(Expected,Actual);
@@ -375,7 +375,7 @@ public class basePage
 	@Then("User Clicking on Proceed to Checkout button leads to payment gateway page")
 	public void checkOutPage()
 	{
-		out = new checkOut(driver);
+		out = new checkOutPage(driver);
 		out.finalProcess();
 	}
 	
