@@ -9,14 +9,12 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class CheckSliders
+public class checkSliders
 {
 	
 	
-	public CheckSliders(WebDriver driver)
+	public checkSliders(WebDriver driver)
 	{
 		this.driver = driver;
 		AjaxElementLocatorFactory factory = new AjaxElementLocatorFactory(driver, 30);
@@ -35,10 +33,10 @@ public class CheckSliders
 	
 	@FindBy (xpath = "//a[text()=\"Home\"]")
 	@CacheLookup
-	WebElement home_btn;
+	WebElement homeBtn;
 	
 	
-	@FindBy(xpath = "//div[@data-ssright=\"0+15\"]")
+	@FindBy(xpath = "//img[@class=\"n2-ss-slide-background-image n2-ss-slide-fill n2-ow\"]")
 	@CacheLookup
 	List<WebElement> SliderCount3;
 	
@@ -48,29 +46,28 @@ public class CheckSliders
 	
 
 	//Methods:
-	public void click_on_Shop_btn()
+	public void clickOnShopBtn()
 	{
 		shop_btn.click();
 
 	}
 	
 	
-	public void Click_on_Home_btn()
+	public void clickOnHomeBtn()
 	{
-		home_btn.click();
+		homeBtn.click();
 	}
 	
 	
-	public void QuantityOfSliders()
+	public void quantityOfSliders()
 	{
 		
-		System.out.println("Number of Arrivals found:" + SliderCount3.size() ); 
+		System.out.println("Number of Sliders found:" + SliderCount3.size() ); 
 	}
 
-	public void confirmation()
+	public boolean confirmation()
 	{
-		
-		verification.isDisplayed();
+		return verification.isDisplayed();
 	}
 	
 	

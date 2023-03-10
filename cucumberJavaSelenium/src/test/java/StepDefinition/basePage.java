@@ -1,54 +1,57 @@
 package StepDefinition;
 
+import static org.junit.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
+
+
 import java.time.Duration;
 import java.util.Arrays;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
-import org.openqa.selenium.By;
+
+
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import Pages.CheckArrivals;
-import Pages.CheckDiscount;
-import Pages.CheckSliders;
-import Pages.ClickingOnArrivals;
-import Pages.DescriptionBox;
-import Pages.FinalBilling;
-import Pages.RemoveProduct;
-import Pages.UpdateProduct;
-import io.cucumber.core.internal.com.fasterxml.jackson.annotation.JacksonInject.Value;
+import Pages.addBook;
+import Pages.checkArrivals;
+import Pages.checkDiscount;
+import Pages.checkOut;
+import Pages.checkSliders;
+import Pages.descriptionBox;
+import Pages.finalBilling;
+import Pages.removeProduct;
+import Pages.updateProduct;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.But;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-import static org.junit.Assert.assertEquals;
 
-
-public class Main
+public class basePage
 {
 
 	WebDriver driver = null;
-	CheckSliders sli ;
-	CheckArrivals arrival;
-	ClickingOnArrivals click;
-	DescriptionBox box;
-	CheckDiscount check;
-	RemoveProduct product ;
-	UpdateProduct update;
-	FinalBilling billing;
-
-
+	checkSliders sli ;
+	checkArrivals arrival;
+	addBook click;
+	descriptionBox box;
+	checkDiscount check;
+	removeProduct product ;
+	updateProduct update;
+	finalBilling billing;
+	WebDriverWait wait;
+	checkOut out;
+	
 	//@Before(Value="@TestCase-1", order = 1)
+	@SuppressWarnings("deprecation")
 	@Before(order = 1)
 	public void browser_is_open() 
 	{
@@ -71,9 +74,11 @@ public class Main
 
 
 
+	@SuppressWarnings("deprecation")
 	@And("User is on Automation Seach Page")
-	public void user_is_on_automation_seach_page() throws InterruptedException
+	public void userIsOnAutomationSeachPage() throws InterruptedException
 	{
+		
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		System.out.println("inside step -user is  in automation Test page");
 		driver.navigate().to("https://practice.automationtesting.in/");  
@@ -81,38 +86,39 @@ public class Main
 
 
 	@When("User able to click on Shop Menu")
-	public void Click_on_shop_menu() throws InterruptedException 
+	public void clickOnShopMenu() throws InterruptedException 
 	{
 		
-		sli = new CheckSliders(driver); 	
-		sli.click_on_Shop_btn();	
-		System.out.println("inside step -user is  in Shop Menu ");
+		sli = new checkSliders(driver); 	
+		sli.clickOnShopBtn();	
 	}
 
 
 	@And("Now click on Home menu button")
-	public void Click_on_home_menu_button() 
+	public void clickOnHomeMenuButton() 
 	{
-		sli.Click_on_Home_btn();
+		sli.clickOnHomeBtn();
 		System.out.println("inside step -user is  in automation Home page");
 
 	}
 
 
 	@Then("Test whether the Home page has Three Sliders only")
-	public void Test_whether_the_home_page_has_three_sliders_Or_Not() throws InterruptedException
+	public void testWhetherTheHomePageHasThreeSlidersOrNot() throws InterruptedException
 	{
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		System.out.println("inside step -user Check siliders:");
-		sli.QuantityOfSliders();
+		sli.quantityOfSliders();
 	}
 
 
+		
 	@And("The Home page must contains only three sliders")
-	public void Home_page_must_contains_only_three_sliders()
+	public void homePageMustContainsOnlyThreeSliders()
 	{
-		sli.confirmation();
-		System.out.println("The Home page  contains only three sliders");
+	
+		 Boolean Actual =  sli.confirmation();
+		 assertTrue(Actual);
 	}
 
 
@@ -124,24 +130,24 @@ public class Main
 
 
 
+	@SuppressWarnings("deprecation")
 	@Then("Test whether the Home page has Three Arrivsals only")
-	public void Test_whether_the_home_page_has_three_Arrivals_Or_Not()
+	public void TestWhetherTheHomePageHasThreeArrivalsOrNot()
 	{
-		arrival = new CheckArrivals(driver);
+		arrival = new checkArrivals(driver);
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		JavascriptExecutor js1 = (JavascriptExecutor) driver;
 		js1.executeScript("window.scrollBy(0,800)", "");
-		System.out.println("inside step -user Check Arrivals:");
-		arrival.QuantityOfArrivals();
+		arrival.quantityOfArrivals();
 
 	}		
 
-
 	@And("The Home page must contains only three Arrivals")
-	public void Home_page_must_contains_only_three_Arrivals()
+	public void homePageMustContainsOnlyThreeArrivals()
 	{
-		arrival.confirm();
-		System.out.println("The Home page contain only Three Arrivals:");
+		String Actual = arrival.confirm();
+		String Expected = "Thinking in HTML";
+		assertEquals(Expected, Actual);
 	}
 
 
@@ -152,29 +158,26 @@ public class Main
 
 
 
+	@SuppressWarnings("deprecation")
 	@When("user click the image in the Arrivals")
-	public void Click_on_img() throws InterruptedException 
+	public void clickOnImg() throws InterruptedException 
 	{
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		click = new ClickingOnArrivals(driver);
+		click = new addBook(driver);
 		JavascriptExecutor js1 = (JavascriptExecutor) driver;
 		js1.executeScript("window.scrollBy(0,300)", "");
-
-		click.ClickOnJavaScript();
-
+		click.clickOnJavaScript();
 	}
 
 
 	@Then("Test whether it is navigating to next page where the user can add that book into his basket")
-	public void Test_Navigating_To_Next_Page()
+	public void testNavigatingToNextPage()
 	{
-		System.out.println("inside step - Test Weather User Can Add this book in the Basket or Not :");
-		//driver.findElement(By.xpath("//button[text()=\"Add to basket\"]"));
-		click.checkItVisibleOrNot();
-
+		String Actual =  click.checkItVisibleOrNot();
+		String Expected = "ADD TO BASKET";
+		assertEquals(Expected, Actual);
+		
 	}
-
-
 
 
 
@@ -183,31 +186,36 @@ public class Main
 
 
 
+	@SuppressWarnings("deprecation")
 	@And("Image should be clickable and shoul navigate to next page where user can add that book to his basket")
-	public void user_able_to__Descr_tab()
+	public void userAbleToDescrTab()
 	{	
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		box = new DescriptionBox(driver);
-		System.out.println("inside step - Image should be clickable And User Can Add this Book Successfully:");
+		box = new descriptionBox(driver);
+		click.checkItVisibleOrNot();
+
 	}
 
 
 	@Then("user able to Click on Description tab for the Book")
-	public void Click_On_Description_tabs()
+	public void clickOnDescriptionTabs()
 	{
 
 		JavascriptExecutor js1 = (JavascriptExecutor) driver;
 		js1.executeScript("window.scrollBy(0,600)", "");
+		box.clickDsrcptionBox();
 		System.out.println("inside step - user clicked on Description Tab:");
-		box.Click_Dsrcption_Box();
+
 	}
 
 
 	@And("There should be a description regarding that book the user clicked on")
-	public void Check_Description()
+	public void checkDescription()
 	{
-		box.IsVisibleOrNot();
-		System.out.println("inside step - User can See the WHole Description regarding the book:");
+		String Actual = box.isVisibleOrNot();
+		String Expected = "Product Description";
+		assertEquals(Expected, Actual);
+		System.out.println("inside step - User can See the Whole Description regarding the book:");
 	}
 
 
@@ -219,51 +227,50 @@ public class Main
 
 
 	@Then("Click on the Add To Basket button which adds that book to your basket")
-	public void Click_On_Add_To_Basket()
+	public void clickOnAddToBasket()
 	{
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		check = new  CheckDiscount(driver);
+		check = new  checkDiscount(driver);
 		check.addToBasket();
 	}
 
 
 	@And("User can view that Book in the Menu item with price")
-	public void User_Can_See_Menu_Item() throws InterruptedException
+	public void userCanSeeMenuItem() throws InterruptedException
 	{
 		check.checkMenuItem();
-		System.out.println("User can able view that  Menu item with price");
-		Thread.sleep(2000);
 	}
 
 
 	@Then("user click on Item link which navigates to proceed to check out page.")
-	public void Click_On_Item_Menu() 
+	public void clickOnItemMenu() 
 	{
-		check.checkoutPage();
+		check.checkOutPage();
 		check.checkMenuItem();
 	}
 
 
 	@Then("User leads to the check out page")
-	public void User_Can_Fetch_Check_Out_Page() throws InterruptedException
+	public void userCanFetchCheckOutPage() throws InterruptedException
 	{
-		System.out.println("Now user can see the check out Page :");
-		Thread.sleep(2000);
+		String webUrl = driver.getCurrentUrl();
+		String expectedUrl = "https://practice.automationtesting.in/basket/";
+		assertEquals(expectedUrl,webUrl);
 	}
 
 
 	@When("Enter the Coupon code as krishnasakinala to get 50rps off on the total.")
-	public void Enter_coupon_code()
+	public void enterCouponCode()
 	{
 		check.checkCoupon();
-		
 	}
 
 
 	@But("User can not able to apply coupon because the coupon is applicable for the book price > 450 rps")
-	public void User_not_able_to_Get_Discount()
+	public void userNotAbleToGetDiscount()
 	{
-		System.out.println("User can not able to apply coupon because The minimum spend for this coupon is RS-450 ");
+		String Actual = check.discountNotAvailable();
+		String Expected = "The minimum spend for this coupon is ₹450.00.";
+		assertEquals(Expected,Actual);
 	}
 
 
@@ -275,21 +282,21 @@ public class Main
 
 
 	@Then("click on Remove this icon in Check out page")
-	public void Click_On_Remove_Book() throws InterruptedException
+	public void clickOnRemoveBook() throws InterruptedException
 	{
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		product= new RemoveProduct(driver);
+		product= new removeProduct(driver);
 		product.productRemove();
-		System.out.println("Now user can Remove this Selected Item In checkOut Page Also:");
 
 	}
 
 
 	@And("User has the feasibility to remove the book at the time of check out also")
-	public void Test_Weather_It_removed_Or_Not() throws InterruptedException
+	public void testWeatherItremovedOrNot() throws InterruptedException
 	{
-
-		System.out.println("User has successfully Removed Item");
+		String Actual = product.removedMsg();
+		String Expected = "Mastering JavaScript removed. Undo?";
+		assertEquals(Expected,Actual);
+		
 
 	}
 
@@ -302,38 +309,36 @@ public class Main
 
 
 	@Then("Click on textbox value")
-	public void Click_On_Text_Box()
+	public void clickOnTextBox()
 	{
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		update = new UpdateProduct(driver);
-		//update.clear_previos_value();
+		update = new updateProduct(driver);
 		update.clickOntextBtn();
-		System.out.println("Now user can Increase Or Decrease Items:");
 
 	}
 
 
 	@And("Now after the above change Update Basket button will turn into Clickable mode.")
-	public void Incresing_() throws InterruptedException
+	public void incresing() throws InterruptedException
 	{
-
-		System.out.println("User can See The Above Changes:");
+		boolean Actual = update.updateBtnClickableMode();
+		assertTrue(Actual);
 	}
 
 
 	@Then("click on Update Basket")
-	public void Click_On_Update_Basket()
+	public void clickOnUpdateBasket()
 	{
 		update.clickOnUpdateBtn();
-		System.out.println("User can update the basket After changes:");
 	}
 
 
 	@And("User has the feasibility to Update Basket at the time of check out.")
-	public void Test_Weather_It_Update_Or_Not() throws InterruptedException
+	public void testWeatherItUpdateOrNot() throws InterruptedException
 	{
-		update.updateVisibleOrNot();
-		System.out.println("User can Successfully Update the Baske");
+		String Actual = update.updateVisibleOrNot();
+		String Expected = "Basket updated.";
+		assertEquals(Expected,Actual);
+
 	}
 
 
@@ -344,19 +349,22 @@ public class Main
 
 
 	@And("User can find the Total price of the book in the Check out grid.")
-	public void Fetch_Total_Price() throws InterruptedException
+	public void fetchTotalPrice() throws InterruptedException
 	{
-		billing = new FinalBilling(driver);
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		billing.Check_Out_grid();		
-		System.out.println("User Can Fetch The total Price of That Book");
+		billing = new finalBilling(driver);
+		String Actual = billing.checkOutGrid();
+		String Expected = "Total";
+		assertEquals(Expected,Actual);
+				
 	}
 
 	@Then("User has the feasibility to find the total price of the books at the time of check out")
 	public void FetchAllBooksPrice()
 	{
-		billing.TotalBill();		
-		System.out.println("User Can Fetch All Books Price In Check OUt Page:");
+		String Actual = billing.totalBill();
+		String Expected = "Total ₹357.00";
+		assertEquals(Expected,Actual);
+				
 	}
 
 
@@ -364,8 +372,33 @@ public class Main
 	//===========Test Cases 9 - As an existing user can Check Out Updated Basket===================//
 
 
+	@Then("User Clicking on Proceed to Checkout button leads to payment gateway page")
+	public void checkOutPage()
+	{
+		out = new checkOut(driver);
+		out.finalProcess();
+	}
+	
+	
+	
+	@After(order = 1)
+	public void takeScreenshotOnFailure(io.cucumber.java.Scenario scenario)
+	{
+		if(scenario.isFailed())
+		{
+			TakesScreenshot ts = (TakesScreenshot) driver;
+			byte[] src = ts.getScreenshotAs(OutputType.BYTES);
+			scenario.attach(src, "image/img", "screenshot");
+			
+			
+		}
+		
+	}
+	
+	
 
-	@After
+	
+	@After(order = 0)
 	public void tearDown()
 	{
 		

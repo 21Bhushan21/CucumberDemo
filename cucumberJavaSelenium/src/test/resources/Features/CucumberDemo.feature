@@ -1,7 +1,5 @@
+@SmokeTest
 Feature: feature to test to AutomationSearch fucntionality
-
-  #Background: user able to open webPage
-    #Given user is able to handle webPage
 
   @TestCase-1
   Scenario: Test Case 1 - validate Quantity of Sliders :
@@ -121,3 +119,4 @@ Feature: feature to test to AutomationSearch fucntionality
     And Now after the above change Update Basket button will turn into Clickable mode.
     Then click on Update Basket
     And User has the feasibility to Update Basket at the time of check out.
+    Then User Clicking on Proceed to Checkout button leads to payment gateway page

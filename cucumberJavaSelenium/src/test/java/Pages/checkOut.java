@@ -6,11 +6,10 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class RemoveProduct 
-{
+public class checkOut {
 
 	WebDriver driver;
-	public RemoveProduct(WebDriver driver)
+	public checkOut(WebDriver driver) 
 	{
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -18,13 +17,15 @@ public class RemoveProduct
 	
 	
 	
-	@FindBy(xpath = "//a[@title=\"Remove this item\"]")
+	@FindBy(xpath = "//a[@class=\"checkout-button button alt wc-forward\"]")
 	@CacheLookup
-	WebElement removeBook;
+	WebElement address;
 	
 	
-	public void productRemove()
+	
+	
+	public void finalProcess()
 	{
-		removeBook.click();
+		address.click();
 	}
 }

@@ -6,12 +6,12 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class DescriptionBox 
+public class descriptionBox 
 {
 
 	
 	WebDriver driver;
-	public DescriptionBox(WebDriver driver) 
+	public descriptionBox(WebDriver driver) 
 	{
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -31,14 +31,17 @@ public class DescriptionBox
 	
 	
 	//Methods:
-	public void Click_Dsrcption_Box()
+	public void clickDsrcptionBox()
 	{
 		dscrption.click();
 	}
 	
 	
-	public void IsVisibleOrNot()
+	public String isVisibleOrNot()
 	{
-		visibility.isDisplayed();
+		return visibility.getText();
 	}
+
+
+	
 }

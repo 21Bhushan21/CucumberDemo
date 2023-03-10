@@ -5,11 +5,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class CheckDiscount {
+public class checkDiscount {
 
 	WebDriver driver;
-	public CheckDiscount(WebDriver driver) 
+	WebDriverWait wait;
+	
+	public checkDiscount(WebDriver driver) 
 	{
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -31,7 +34,7 @@ public class CheckDiscount {
 	WebElement checkOut;
 	
 	
-	@FindBy(xpath = "//input[@id=\"coupon_code\"]")
+	@FindBy(xpath = "//input[@name=\"coupon_code\"]")
 	@CacheLookup
 	WebElement code;
 	
@@ -41,18 +44,23 @@ public class CheckDiscount {
 	WebElement coupon;
 	
 
+	@FindBy(xpath = "//ul[@class=\"woocommerce-error\"]//li")
+	@CacheLookup
+	WebElement discount;
+	
+
 	//Methods:
 	public void addToBasket() 
 	{
+		
 		Add.click();
 	}
 	
 	
-	public void checkoutPage() 
+	public void checkOutPage() 
 	{
 		CartItem.isDisplayed();
 	}
-	
 	
 	
 	public void checkMenuItem() 
@@ -61,11 +69,16 @@ public class CheckDiscount {
 	}
 	
 	
-	
 	public void  checkCoupon() 
 	{
 		code.sendKeys("krishnasakinala");
 		coupon.click();
 	}
+	
+	public String  discountNotAvailable()
+	{
+		return discount.getText();
+	}
+	
 	
 }

@@ -1,16 +1,15 @@
 package Pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ClickingOnArrivals
+public class addBook
 {
 
 	WebDriver driver;
-	public ClickingOnArrivals(WebDriver driver) 
+	public addBook(WebDriver driver) 
 	{
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -29,15 +28,15 @@ public class ClickingOnArrivals
 	
 	
 	
-	public void ClickOnJavaScript() 
+	public void clickOnJavaScript() 
 	{
 		
 		Image.click();
 	}
 	
-	public void checkItVisibleOrNot()
+	public String checkItVisibleOrNot()
 	{
-		PageCheck.isDisplayed();
+		return PageCheck.getText();
 	}
 	
 	

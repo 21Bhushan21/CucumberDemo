@@ -8,11 +8,12 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class CheckArrivals 
+
+public class checkArrivals 
 {
 
 	WebDriver driver;
-	public CheckArrivals(WebDriver driver) 
+	public checkArrivals(WebDriver driver) 
 	{
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -26,20 +27,20 @@ public class CheckArrivals
 	
 	
 
-	@FindBy(xpath = "//img[@alt=\"Shop Selenium Books\"]")
+	@FindBy(xpath = "//h3[text()=\"Thinking in HTML\"]")
 	@CacheLookup
 	WebElement verify;
 	
 	
-	public void QuantityOfArrivals()
+	public void quantityOfArrivals()
 	{
-		
 		System.out.println("Number of Arrivals found:" + productCount3.size() ); 
 	}
 	
 	
-	public void confirm()
-	{
-		verify.isDisplayed();
+	
+	public String confirm()
+	{	 
+		return verify.getText();
 	}
 }

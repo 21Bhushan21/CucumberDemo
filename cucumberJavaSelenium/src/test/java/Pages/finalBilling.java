@@ -6,11 +6,11 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class FinalBilling 
+public class finalBilling 
 {
 
 	WebDriver driver;
-	public FinalBilling(WebDriver driver)
+	public finalBilling(WebDriver driver)
 	{
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -24,19 +24,20 @@ public class FinalBilling
 
 	@FindBy(xpath ="//tr[@class=\"order-total\"]" )
 	@CacheLookup
-	WebElement TotalPrice;
+	WebElement totalPrice;
 
 
 
-	public void Check_Out_grid()
+	public String checkOutGrid()
 	{	
-		checkPrice.isDisplayed();
+		return checkPrice.getText();
+		
 	}
 
 
-	public void TotalBill() 
+	public String totalBill() 
 	{
-		TotalPrice.isDisplayed();
+		return totalPrice.getText();
 	}
 }
 
