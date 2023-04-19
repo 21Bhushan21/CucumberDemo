@@ -42,9 +42,10 @@ public class updatePage {
 
 
 
-	public void clickOntextBtn() 
+
+	public void clickOntextBtn(String value) 
 	{
-		txtBox.sendKeys("1");
+		txtBox.sendKeys(value);
 	}
 	
 	public boolean updateBtnClickableMode()

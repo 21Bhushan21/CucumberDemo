@@ -1,5 +1,6 @@
 package Pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -56,6 +57,14 @@ public class discountPage {
 		Add.click();
 	}
 	
+
+	public void checkMenuItem() 
+	{
+		
+		    checkOut.click();
+		
+	}
+	
 	
 	public void checkOutPage() 
 	{
@@ -63,15 +72,11 @@ public class discountPage {
 	}
 	
 	
-	public void checkMenuItem() 
-	{
-		checkOut.click();
-	}
 	
 	
-	public void  checkCoupon() 
+	public void  checkCoupon(String couponCode) 
 	{
-		code.sendKeys("krishnasakinala");
+		code.sendKeys(couponCode);
 		coupon.click();
 	}
 	
