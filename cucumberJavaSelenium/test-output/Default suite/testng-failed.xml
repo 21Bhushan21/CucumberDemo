@@ -6,7 +6,7 @@
       <class name="parallel.ParallelRun">
         <methods>
           <include name="setUpClass"/>
-          <include name="runScenario" invocation-numbers="3 7 4 8"/>
+          <include name="runScenario" invocation-numbers="0 4 3 6 8"/>
           <include name="tearDownClass"/>
         </methods>
       </class> <!-- parallel.ParallelRun -->

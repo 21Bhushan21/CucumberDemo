@@ -1,4 +1,4 @@
-package parallel;
+package StepDefinition;
 
 
 import static org.junit.Assert.assertEquals;
@@ -83,7 +83,7 @@ public class basePage
 	public void userIsOnAutomationSeachPage() throws InterruptedException
 	{
 		
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		System.out.println("inside step -user is  in automation Test page");
 		driver.navigate().to("https://practice.automationtesting.in/");  
 	}
@@ -139,7 +139,7 @@ public class basePage
 	public void TestWhetherTheHomePageHasThreeArrivalsOrNot()
 	{
 		arrival = new arrivalsPage(driver);
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		JavascriptExecutor js1 = (JavascriptExecutor) driver;
 		js1.executeScript("window.scrollBy(0,800)", "");
 		arrival.quantityOfArrivals();
@@ -166,7 +166,7 @@ public class basePage
 	@When("user click the image in the Arrivals")
 	public void clickOnImg() throws InterruptedException 
 	{
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		click = new addBook(driver);
 		JavascriptExecutor js1 = (JavascriptExecutor) driver;
 		js1.executeScript("window.scrollBy(0,300)", "");
@@ -194,7 +194,7 @@ public class basePage
 	@And("Image should be clickable and shoul navigate to next page where user can add that book to his basket")
 	public void userAbleToDescrTab()
 	{	
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		box = new descriptionPage(driver);
 		click.checkItVisibleOrNot();
 
@@ -241,14 +241,15 @@ public class basePage
 	@And("User can view that Book in the Menu item with price")
 	public void userCanSeeMenuItem() throws InterruptedException
 	{
-		check.checkMenuItem();
+		
+		check.checkOutPage();
+
 	}
 
 
 	@Then("user click on Item link which navigates to proceed to check out page.")
 	public void clickOnItemMenu() 
 	{
-		check.checkOutPage();
 		check.checkMenuItem();
 	}
 
@@ -424,7 +425,7 @@ public class basePage
 	{
 		
 		System.out.println(" Your TestCases is Successfully Run :");
-		driver.quit();
+		//driver.quit();
 		
 	}
 

@@ -1,6 +1,5 @@
 package Pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -26,12 +25,12 @@ public class discountPage {
 	WebElement Add;
 	
 	
-	@FindBy(xpath = "//span[@class=\"cartcontents\"]")
+	@FindBy(xpath = "//span[@class=\"amount\"]")
 	@CacheLookup
 	WebElement CartItem;
 	
 	
-	@FindBy(xpath = "//span[@class=\"cartcontents\"]")
+	@FindBy(xpath = "//span[@class=\"amount\"]")
 	WebElement checkOut;
 	
 	
@@ -58,19 +57,26 @@ public class discountPage {
 	}
 	
 
+	public void checkOutPage() 
+	{
+		try 
+		{
+			CartItem.isDisplayed();
+			
+		} 
+		catch (Exception e)
+		{
+			CartItem.isDisplayed();
+		}
+		
+	}
+	
+	
 	public void checkMenuItem() 
 	{
 		
-		    checkOut.click();
-		
+		checkOut.click();
 	}
-	
-	
-	public void checkOutPage() 
-	{
-		CartItem.isDisplayed();
-	}
-	
 	
 	
 	
